@@ -3,8 +3,8 @@ import 'dart:async';
 import 'package:dbus/dbus.dart';
 import 'package:meta/meta.dart';
 
-class XdgLocaleService {
-  XdgLocaleService({
+class XdgLocaleClient {
+  XdgLocaleClient({
     DBusClient? bus,
     @visibleForTesting DBusRemoteObject? object,
   })  : _bus = bus,
