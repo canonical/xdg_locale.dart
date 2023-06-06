@@ -2,6 +2,8 @@ name: xdg_locale
 description: Native Dart client library to access the D-Bus interface of systemd-localed.
 version: 0.0.1
 
+homepage: https://github.com/canonical/xdg_locale.dart
+
 environment:
   sdk: ^3.0.0
 
