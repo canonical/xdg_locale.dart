@@ -1,0 +1,30 @@
+name: Mocks
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  mocks:
+    runs-on: ubuntu-latest
+    container:
+      image: dart:stable
+    steps:
+      - uses: actions/checkout@v3
+      - run: dart pub get
+      - run: dart run build_runner build --delete-conflicting-outputs
+      - name: Check for outdated mocks
+        if: github.event_name == 'pull_request'
+        run: ./.github/scripts/check-outdated-files.sh
+      - name: Create PR
+        if: github.event_name == 'push'
+        uses: peter-evans/create-pull-request@v5
+        with:
+          add-paths: '**/*.mocks.dart'
+          title: 'chore: regenerate mocks'
+          commit-message: 'chore: regenerate mocks'
+          branch: create-pull-request/mocks
+          delete-branch: true
