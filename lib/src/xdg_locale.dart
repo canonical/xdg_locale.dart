@@ -47,12 +47,13 @@ class XdgLocaleClient {
   /// The X11 keyboard options.
   String get x11Options => _getProperty('X11Options', '');
 
-  /// The VConsole keymap
+  /// The VConsole keymap.
   String get vConsoleKeymap => _getProperty('VConsoleKeymap', '');
 
-  /// The VConsole toggle keymap (secondary keymap)
+  /// The VConsole toggle keymap (secondary keymap).
   String get vConsoleKeymapToggle => _getProperty('VConsoleKeymapToggle', '');
 
+  /// Sets the system locale.
   Future<void> setLocale(Map<String, String> locale, bool interactive) {
     return _object.callMethod(
       interfaceName,
@@ -67,6 +68,7 @@ class XdgLocaleClient {
     );
   }
 
+  /// Sets the VConsole keyboard.
   Future<void> setVConsoleKeyboard(
     String keymap,
     String keymapToggle,
@@ -86,6 +88,7 @@ class XdgLocaleClient {
     );
   }
 
+  /// Sets the X11 keyboard.
   Future<void> setX11Keyboard(
     String layout,
     String model,
